@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" /> 
+    <title>Document</title>
+    <link rel="stylesheet" href="./styl.css">
+  </head>
+  <body>
+    <h1>Rock Paper Scissors</h1>
+    <button    onclick="playerMove('Rock');" class="game"><img src="./img/rock.png" alt=""></button>
+    <button onclick="playerMove('Paper')" class="game"><img src="./img/paper.png" alt=""></button>
+    <button onclick="playerMove('Scissors')" class="game"><img src="./img/scissors.png" alt=""></button>
+    <p class="result-display"></p>
+    <pre class="move">You  <img src="" alt="" class="playerm" > <img src="" alt="" class="computerm">     computer</pre>
+    <p class="result">
+      wins:0,losses:0,ties:0
+    </p>
+    <button onclick="score.win=0;score.losses=0;score.ties=0;
+     localStorage.setItem('score',JSON.stringify(score));
+     document.querySelector('.result').innerHTML=`wins: ${score.win}, losses: ${score.losses}, ties: ${score.ties}`;
+    " class="reset">
+      Reset Score
+    </button>
+
+    <script>
+      let score = JSON.parse(localStorage.getItem("score"));
+      if (!score) {
+  score = {
+    win: 0,
+    losses: 0,
+    ties: 0
+  };
+}
+document.querySelector('.result').innerHTML=`wins: ${score.win}, losses: ${score.losses}, ties: ${score.ties}`;
+      
+      function playerMove(pMove) {
+        const computer = computerMove();
+       
+        // Convert both moves to lowercase for comparison
+        const player = pMove.toLowerCase();
+        let result = "";
+
+        document.querySelector('.playerm').src='./img/' + pMove + '.png';
+        document.querySelector('.computerm').src='./img/' + computer + '.png';
+
+
+        if (player === "rock") {
+          if (computer === "rock") {
+            result = "It's a Tie!";
+            score.ties++;
+          } else if (computer === "paper") {
+            result = "Computer Wins!";
+            score.losses++;
+          } else if (computer === "scissors") {
+            result = "You Win!";
+            score.win++;
+          }
+        } else if (player === "paper") {
+          if (computer === "rock") {
+            result = "You Win!";
+            score.win++;
+          } else if (computer === "paper") {
+            result = "It's a Tie!";
+            score.ties++;
+          } else if (computer === "scissors") {
+            result = "Computer Wins!";
+            score.losses++;
+          }
+        } else if (player === "scissors") {
+          if (computer === "rock") {
+            result = "Computer Wins!";
+            score.losses++;
+          } else if (computer === "paper") {
+            result = "You Win!";
+            score.win++;
+          } else if (computer === "scissors") {
+            result = "It's a Tie!";
+            score.ties++;
+          }
+        }
+        document.querySelector('.result-display').innerHTML=result;
+        // document.querySelector('.move').innerHTML=`you ${player} - computer ${computer}`
+
+        localStorage.setItem('score',JSON.stringify(score));
+        
+document.querySelector('.result').innerHTML=`Wins: ${score.win}, Losses: ${score.losses}, Ties: ${score.ties}`;
+      }
+
+      function computerMove() {
+        let move = "";
+        const num = Math.floor(Math.random() * 3) + 1;
+        if (num === 1) {
+          move = "rock";
+        } else if (num === 2) {
+          move = "paper";
+        } else if (num === 3) {
+          move = "scissors";
+        }
+        return move;
+      }
+    </script>
+  </body>
+</html>

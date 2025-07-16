@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>project</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <p>YouTube Subscribe Button</p>
+    <button
+      class="subscribe"
+      onclick=" toggleSubscribe();"
+    >
+      Subscribe
+    </button>
+
+    <p>Rock Paper Scissors</p>
+    <a href="./rockpaperscissors/webpage.html">Click here</a>
+    <pre>
+Amazon Shipping Calculator
+
+Orders under $40 = +$10 shipping.
+
+Orders over $40 = FREE shipping.
+  </pre
+    >
+    <input
+      type="number"
+      placeholder="Cost of order"
+      onkeydown="
+    if(event.key==='Enter'){
+      calculateTotal();
+    }"
+    />
+    <button class="calculate" onclick="calculateTotal()">Calculate</button>
+    <p class="result"></p>
+
+    <a href="">css version of these projects</a>
+    <script>
+     
+
+
+
+      function calculateTotal() {
+        let cost = Number(document.querySelector("input").value);
+        if (cost < 40) {
+          cost = cost + 10;
+        }
+        document.querySelector(".result").innerHTML = `$${cost}`;
+      }
+
+      
+  function toggleSubscribe() {
+    const btn = document.querySelector('.subscribe');
+    if (btn.innerHTML === 'Subscribe') {
+      btn.innerHTML = 'Subscribed';
+      btn.classList.add('toggle');
+    } else {
+      btn.innerHTML = 'Subscribe';
+      btn.classList.remove('toggle');
+    }
+  }
+
+    </script>
+  </body>
+</html>

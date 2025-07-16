@@ -1,0 +1,36 @@
+body{
+  color:black;
+  font-size: 18px;
+}
+.subscribe{
+  border: none;
+   font-size: 14px;
+  color: white;
+  background-color: black;
+  padding: 10px 15px ;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+}
+input{
+      padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 15px;
+}
+.calculate{
+      background-color: green;
+    color: white;
+    border: none;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 15px;
+    cursor: pointer;
+}
+.toggle{
+  background-color: rgb(240, 240,240);
+  color: black;
+}
